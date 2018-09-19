@@ -1,7 +1,18 @@
 {
-  "name": "mainRendererCommunication",
+  "name": "vocabulary-app",
+  "productName": "Simple Dictionary",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "electron index.js"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "wordnet": "^0.1.2"
+  },
+  "electron-packager": "^8.1.0",
+  "devDependencies": {
+    "electron": "^1.7.9"
   }
 }
