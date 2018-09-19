@@ -72,11 +72,12 @@ class StoreCollection {
         var result = [];
         this.storeList.forEach(store => {
             var wordList = store.get();
-
-            // Returns a random number between 0 (inclusive) and wordList.length (exclusive)
-            var rnd = Math.floor(Math.random() * wordList.length);
-            var entry = { Word: wordList[rnd], Type: store.type() };
-            result.push(entry);
+            if (wordList.length != 0) {
+                // Returns a random number between 0 (inclusive) and wordList.length (exclusive)
+                var rnd = Math.floor(Math.random() * wordList.length);
+                var entry = { Word: wordList[rnd], Type: store.type() };
+                result.push(entry);
+            }
         });
         return result;
     }

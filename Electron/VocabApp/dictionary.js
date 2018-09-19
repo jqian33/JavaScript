@@ -6,7 +6,7 @@ const Definition = require('./definition.js');
 
 exports.lookup = function(word) {
     return new Promise(resolve => {
-        wordnet.lookup(word, function(err, definitions) {
+        wordnet.lookup(word.toLowerCase(), function(err, definitions) {
             if (err) {
                 resolve(null);
             }
@@ -19,6 +19,3 @@ exports.lookup = function(word) {
         });
     });
 }
-
-
-

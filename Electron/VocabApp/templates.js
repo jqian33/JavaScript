@@ -1,7 +1,7 @@
 // Contain functions to return dynamic html templates
 var exports = module.exports = {};
 
-exports.BuildeHtmlDefiniton = function(definition) {
+exports.BuildHtmlDefinition = function(definition) {
     return '<ul class="list-group">' +
     '<li class="list-group-item"><i>' + definition.type + '</i></li>' +
     '<li class="list-group-item">' + definition.definition + '</li>' +

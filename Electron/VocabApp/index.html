@@ -2,20 +2,21 @@
 <html>
 <head>
     <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="./custom.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Vocabulary App</title>
 </head>
 <body>
     <div class="container">
-        <div class="row top-buffer" />
         
-        <div class="row"> 
-            <div class="col-xs-3"></div>
-            <div class="col-xs-6">
-                <input id="searchBox" class="form-control" type="text"></input>
+        <!-- Search Bar -->
+        <div class="row top-buffer">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <input id="searchBox" class="form-control center-block" type="text" />
             </div>
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <button class="btn btn-success center-block" id="buttonShuffle" type="text">Shuffle</button>
             </div>
         </div>
@@ -26,40 +27,39 @@
             </div>
         </div> -->
 
-        <div class="row top-buffer" />
-        
         <!-- Definition Card -->
-        <div class="row">
-            <div id="definitonCardToggle" data-toggle="collapse" href="#definitionCard" ></div>
-            <div class="collapse" id="definitionCard">
-                <div class="well col-xs-12">
-                    <div class=row>
-                        <div class="col-xs-6">
+        <div class="row top-buffer" >
+            <div class="col-md-2"></div>
+            <div class="col-md-8 collapse" id="definitionCard">
+                <div class="card card-body bg-light">
+                    <div class="row"> 
+                        <div class="col-md-6">
                             <p id="wordText">placeholder</p>
                         </div>
-                        <div class="col-xs-6">
-                            <span id="buttonAdd" class="glyphicon glyphicon-star-empty star-yellow pull-right"></span>
+                        <div class="col-md-6" id="buttonAddParent">
+                            <span id="buttonAdd" class="fa fa-star-o star-yellow pull-right"></span>
                         </div>
-                        <div class="col-xs-6">
-                            <span id="buttonDelete" class="glyphicon glyphicon-star star-yellow pull-right"></span>
+                        <div class="col-md-6" id="ButtonDeleteParent">
+                            <span id="buttonDelete" class="fa fa-star star-yellow pull-right"></span>
                         </div>
                     </div>                    
-                    <ul id="definitionList" class="list-group">
-                    </ul>
+                    <ul id="definitionList" class="list-group"></ul>
                     <p id="wordNotFoundMsg">Word not found</p>
                 </div>
             </div>
+            <div class="col-md-2"></div>
         </div>
 
         <!-- Shuffled words card -->
-        <div class="row">
-            <div id="shuffledCardToggle" data-toggle="collapse" href="#shuffledCard" ></div>
-            <div class="collapse" id="shuffledCard">
-                <div id="definitionWell" class="well">
+        <div class="row top-buffer">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 collapse" id="shuffledCard">
+                <div class="card card-body bg-light">
                     <ul id="shuffledList" class="list-group"></ul>
                     <p id="emptyCollectionMsg">Collection is empty. Time to add some words :)</p>
                 </div>
             </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 

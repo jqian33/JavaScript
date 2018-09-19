@@ -10,7 +10,7 @@ app.on('ready', function() {
     mainWindow.loadURL('file://' + path.join(__dirname, 'index.html'));
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', () => {
         mainWIndow = null

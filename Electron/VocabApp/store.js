@@ -12,7 +12,6 @@ class Store {
 
         // We'll use the `configName` property to set the file name and path.join to bring it all together as a string
         this.path = path.join(userDataPath, 'store', fileName);
-        console.log(this.path);
         this.data = parseDataFileSync(this.path, {Type: type, Words: []});
         util.sort(this.data.Words);
     }
@@ -65,13 +64,10 @@ function writeFile(path, data) {
 // Only use in constructor
 function parseDataFileSync(filePath, defaultData) {
     try {
-        console.log("Parsing file");
         var data = JSON.parse(fs.readFileSync(filePath));
-        console.log("Parsed JSON is: " + data);
         return data;
     }
     catch(error) {
-        console.log("Failed to parse file.");
         return defaultData;
     }
 }

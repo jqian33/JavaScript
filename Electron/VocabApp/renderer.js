@@ -6,8 +6,6 @@ const templates = require('./templates.js');
 
 var storeCollection = new StoreCollection();
 var currentDef = null;
-$('#buttonAdd').hide();
-$('#buttonDelete').hide();
 
 $('#btn').click(() => {
     console.log(storeCollection.get());
@@ -27,7 +25,6 @@ $('#buttonShuffle').click(() => {
             $('#shuffledList').append(templates.BuildHtmlWords(word));
         });
     }
-    console.log(randomWords);
 });
 
 $('#searchBox').keypress(async (event) => {
@@ -43,27 +40,26 @@ $('#buttonDelete').click(async () => {
     if (currentDef != null) {
         await storeCollection.delete(currentDef);
     }
-    $('#buttonDelete').hide();
-    $('#buttonAdd').show();
+    HideDeleteButton();
+    ShowAddButton();
 });
 
 $('#buttonAdd').click(async () => {
     if (currentDef != null) {
         await storeCollection.add(currentDef);
     }
-    $('#buttonDelete').show();
-    $('#buttonAdd').hide();
+    HideAddButton();
+    ShowDeleteButton();
 });
 
 $('body').on('click', 'a.clickableWord', async (event) => {
-    console.log(event.target.text);
     await LookupWord(event.target.text);
 });
 
 async function LookupWord(word) {
     currentDef = await dict.lookup(word);
-    $('#buttonDelete').hide();
-    $('#buttonAdd').hide();    
+    HideAddButton();
+    HideDeleteButton();   
     $('#shuffledCard').collapse('hide');
     $('#definitionCard').collapse('show');
     $('#definitionList').empty();
@@ -77,19 +73,38 @@ async function LookupWord(word) {
         ToggleSaveButton(word);
         $('#wordNotFoundMsg').hide();
         currentDef.forEach(def => {
-            $('#definitionList').append(templates.BuildeHtmlDefiniton(def));
+            $('#definitionList').append(templates.BuildHtmlDefinition(def));
         });
-    }
-    console.log(currentDef);   
+    } 
 }
 
 function ToggleSaveButton(word) {
     if (storeCollection.inStore(word) == true) {
-        $('#buttonDelete').show();
-        $('#buttonAdd').hide();
+        HideAddButton();
+        ShowDeleteButton();
     }
     else {
-        $('#buttonDelete').hide();
-        $('#buttonAdd').show();
+        HideDeleteButton();
+        ShowAddButton();
     }
+}
+
+function HideAddButton() {
+    $('#buttonAdd').hide();
+    $('#buttonAddParent').hide();
+}
+
+function ShowAddButton() {
+    $('#buttonAdd').show();
+    $('#buttonAddParent').show();
+}
+
+function HideDeleteButton() {
+    $('#buttonDelete').hide();
+    $('#buttonDeleteParent').hide();
+}
+
+function ShowDeleteButton() {
+    $('#buttonDelete').show();
+    $('#buttonDeleteParent').show();
 }
