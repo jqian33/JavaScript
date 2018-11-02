@@ -1,0 +1,10 @@
+FROM node:latest
+
+LABEL Jack Qian
+
+COPY ./package.json /var/www/package.json
+WORKDIR /var/www
+
+RUN npm install
+
+ENTRYPOINT [ "npm", "start" ]

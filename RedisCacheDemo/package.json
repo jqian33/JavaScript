@@ -1,0 +1,19 @@
+{
+  "name": "rediscachedemo",
+  "version": "1.0.0",
+  "description": "Redis cache demo for MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "//": "Must explicitly set host to 0.0.0.0 for it to work",
+    "start": "nodemon --inspect=0.0.0.0:9229 index.js"
+  },
+  "author": "qianj",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.18.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8",
+    "redis": "^2.8.0"
+  }
+}

@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  mongo: 
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - rediscache-network
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379"
+    networks:
+      - rediscache-network
+
+  demo:
+    container_name: rediscache-demo
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - "8000:8000"
+      - "9229:9229"
+    networks:
+      - rediscache-network
+    volumes:
+      - .:/var/www
+      - /var/www/node_modules
+
+networks:
+  rediscache-network:
+    driver: bridge
